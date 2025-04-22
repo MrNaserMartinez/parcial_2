@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionTech - Sistema de Recomendación</title>
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>FashionTech</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Sistema de recomendaciones </a></li>
+                </ul>
+            </nav>
+            <div class="user-section">
+                <select id="user-selector">
+                    <option value="">Seleccionar Usuario</option>
+                    <option value="user1">Alice</option>
+                    <option value="user2">Bob</option>
+                    <option value="user3">Charlie</option>
+                </select>
+                <button id="new-user-btn" class="btn">Nuevo Usuario</button>
+                <button id="assign-product-btn" class="btn">Asignar Producto</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Descubre tu estilo con las mejores recomendaciones</h2>
+                <p>Basado en tu historial de compras y productos similares</p>
+            </div>
+        </section>
+
+        <section class="user-purchases">
+            <div class="container">
+                <h3>Tus Compras</h3>
+                <div id="user-purchases-container" class="products-grid">
+                    <p class="no-selection">Selecciona un usuario para ver sus compras</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations">
+            <div class="container">
+                <h3>Recomendaciones Para Ti</h3>
+                <div id="recommendations-container" class="products-grid">
+                    <p class="no-selection">Selecciona un usuario para ver recomendaciones</p>
+                </div>
+                <div id="loading" class="hidden">Cargando recomendaciones...</div>
+            </div>
+        </section>
+
+        <section class="graph-visualization">
+            <div class="container">
+                <h3>Visualización del Grafo</h3>
+                <div id="graph-container">
+                    <p>Selecciona un usuario para ver la visualización del grafo</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 FashionTech - Sistema de Recomendación con Neo4j</p>
+        </div>
+    </footer>
+
+    <div id="product-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="product-details">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear nuevo usuario -->
+    <div id="new-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-user-modal">&times;</span>
+            <h2>Crear Nuevo Usuario</h2>
+            <form id="new-user-form">
+                <div class="form-group">
+                    <label for="user-id">ID de Usuario:</label>
+                    <input type="text" id="user-id" name="user-id" required placeholder="user4">
+                </div>
+                <div class="form-group">
+                    <label for="user-name">Nombre:</label>
+                    <input type="text" id="user-name" name="user-name" required placeholder="David">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn submit-btn">Guardar Usuario</button>
+                </div>
+            </form>
+            <div id="user-creation-status"></div>
+        </div>
+    </div>
+
+    <!-- Añadir usuarios -->
+    <div id="assign-product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-assign-modal">&times;</span>
+            <h2>Asignar Producto a Usuario</h2>
+            <form id="assign-product-form">
+                <div class="form-group">
+                    <label for="user-select">Usuario:</label>
+                    <select id="user-select" name="user-select" required>
+                        <option value="">Seleccionar usuario</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="product-select">Producto:</label>
+                    <select id="product-select" name="product-select" required>
+                        <option value="">Seleccionar producto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="purchase-frequency">Frecuencia de compra:</label>
+                    <input type="number" id="purchase-frequency" name="purchase-frequency" min="1" value="1" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn submit-btn">Asignar Producto</button>
+                </div>
+            </form>
+            <div id="product-assignment-status"></div>
+        </div>
+    </div>
+
+    <!-- Neo4j Driver -->
+    <script src="https://unpkg.com/neo4j-driver"></script>
+    <!-- Importar D3.js directamente desde CDN -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

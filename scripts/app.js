@@ -1,6 +1,6 @@
-const NEO4J_URI = "bolt://3.222.117.128"; 
+const NEO4J_URI = ""; 
 const NEO4J_USER = "neo4j";                                  
-const NEO4J_PASSWORD = "advance-prerequisite-armors";      
+const NEO4J_PASSWORD = "";      
 
 
 const userSelector = document.getElementById('user-selector');
